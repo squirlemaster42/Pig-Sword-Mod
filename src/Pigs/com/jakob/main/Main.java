@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import sun.net.www.content.text.Generic;
 
 import com.jakob.common.CommonProxy;
+import com.jakob.item.PigItem;
 import com.jakob.references.InitRef;
 
 import cpw.mods.fml.common.Mod;
@@ -17,23 +18,21 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = InitRef.MODID, name = InitRef.NAME, version = InitRef.VERSION)
-public class Main extends Item{
+
+public class Main{
 		
 	 @Instance(value="pigs")
      public static Generic instance;
      
-     @SidedProxy(clientSide="com.jakob.ClientProxy", serverSide="com.jakob.CommonProxy")
+     @SidedProxy(clientSide="com.jakob.client.ClientProxy", serverSide="com.jakob.common.CommonProxy")
      public static CommonProxy proxy;
      
-	 public static Item pigGem;
+	 public static Item PIG_GEM;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		pigGem = new Item();
-		GameRegistry.registerItem(pigGem, pigGem.getUnlocalizedName());
-		pigGem.setUnlocalizedName("pigGem");
-		pigGem.setMaxStackSize(16);
-		pigGem.setCreativeTab(CreativeTabs.tabAllSearch);
+		PIG_GEM = new PigItem();
+		GameRegistry.registerItem(PIG_GEM, PIG_GEM.getUnlocalizedName());
 	}
 
 	@EventHandler
